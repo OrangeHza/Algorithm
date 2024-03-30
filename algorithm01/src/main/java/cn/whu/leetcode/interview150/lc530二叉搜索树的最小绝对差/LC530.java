@@ -19,6 +19,7 @@ public class LC530 extends Solution {
     }
 
     public static void main(String[] args) {
+
         test("[4,2,6,1,3]");
         test("[1,0,48,null,null,12,49]");
         test("[236,104,701,null,227,null,911]");
