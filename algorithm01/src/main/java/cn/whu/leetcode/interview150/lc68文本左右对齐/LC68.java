@@ -15,20 +15,21 @@ public class LC68 extends Solution {
     }
 
     String getRow(List<String> temp, int maxWidth) {
-        if (temp.size() == 1) return temp.get(0) + getBlankStr(maxWidth-temp.get(0).length());
+        if (temp.size() == 1) return temp.get(0) + getBlankStr(maxWidth - temp.get(0).length());
 
         int strTotalLen = 0;
         for (String s : temp) strTotalLen += s.length();
         int blankTotalLen = maxWidth - strTotalLen;
         int blankNum = temp.size() - 1;
         // 总长度maxWidth   实际长度len  实际个数n+1  中间空隙n  需要添加的空格数blank
-        int simpleBlankLen2 = blankTotalLen / blankNum; // 但间隔 空格数  偏少
-        int simpleBlankLen1 = blankTotalLen - (blankNum - 1) * simpleBlankLen2;
+        // 空格的均匀分配很有讲究的
+        int simpleBlankLenAvg = blankTotalLen / blankNum; // 但间隔 空格数  偏少
+        int addBlankNum = blankTotalLen % blankNum; // 前addBlankNum个空隙得多一个空格
         ArrayList<String> ret = new ArrayList<>();
         StringBuilder ans = new StringBuilder(temp.get(0));
         for (int i = 1; i < temp.size(); i++) {
-            if (i == 1) ans.append(getBlankStr(simpleBlankLen1));
-            else ans.append(getBlankStr(simpleBlankLen2));
+            if (i<=addBlankNum) ans.append(getBlankStr(simpleBlankLenAvg+1));
+            else ans.append(getBlankStr(simpleBlankLenAvg));
             ans.append(temp.get(i));
         }
         return ans.toString();
@@ -40,7 +41,7 @@ public class LC68 extends Solution {
         ArrayList<String> temp = new ArrayList<>();
 
         for (String word : words) {
-            if (len + word.length() + 1 <= maxWidth) {
+            if (len + word.length() + 1 <= maxWidth + 1) {//最后一个末尾的空格是可以不需要的
                 len += word.length() + 1;
                 temp.add(word);
             } else {
