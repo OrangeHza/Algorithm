@@ -9,3 +9,7 @@
 2024年05月08日 18:57:32  本地c503 --mergeTo-->main   再 main->remote main
 
 c503拉取main后push到远端
+
+merge main to redmeG
+
+搞错了，pom.xml应该维护在父项目中的，这个做法有问题啊，哎
