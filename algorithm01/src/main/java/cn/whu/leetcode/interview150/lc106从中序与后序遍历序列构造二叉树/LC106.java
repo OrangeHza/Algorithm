@@ -13,7 +13,7 @@ public class LC106 extends Solution {
         if (inorder.length == 0) return null;
 
         int val = postorder[postorder.length - 1];
-        TreeNode root = new TreeNode(val);
+        TreeNode root = new TreeNode(val);//
 
         int k = 0;
         while (inorder[k] != val) k++;
