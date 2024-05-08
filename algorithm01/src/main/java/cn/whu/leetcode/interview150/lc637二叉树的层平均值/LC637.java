@@ -1,4 +1,4 @@
-package cn.whu.leetcode.interview150;
+package cn.whu.leetcode.interview150.lc637二叉树的层平均值;
 
 import cn.whu.utils.Solution;
 import cn.whu.utils.TreeNode;
