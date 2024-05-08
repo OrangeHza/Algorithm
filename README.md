@@ -14,4 +14,4 @@ merge main to redmeG
 
 搞错了，pom.xml应该维护在父项目中的，这个做法有问题啊，哎
 
-外层加上pom.xml作为root, 内层继承外层
+外层加上pom.xml作为root, 内层继承外层 
