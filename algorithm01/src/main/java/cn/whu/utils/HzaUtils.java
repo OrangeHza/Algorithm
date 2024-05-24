@@ -74,7 +74,6 @@ public class HzaUtils {
     }
 
 
-
     public static int[] string2Ints(String strs) {
         if (strs == null || strs.trim().length() == 0) return null;
         strs = replace(strs, "{[]}");
@@ -132,7 +131,7 @@ public class HzaUtils {
         int m = lists.size();
         int n = lists.get(0).size();
         String[][] array = new String[m][n];
-        if(m==0||n==0) return array;
+        if (m == 0 || n == 0) return array;
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
@@ -143,21 +142,20 @@ public class HzaUtils {
     }
 
 
-
     public static char[][] string2CharArray2D(String strs) {
         List<List<String>> lists = HzaUtils.string2StringList2D(strs);
         int m = lists.size();
         int n = lists.get(0).size();
         char[][] array = new char[m][n];
-        if(m==0||n==0) return array;
+        if (m == 0 || n == 0) return array;
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 String s = lists.get(i).get(j);
-                if(s.length()==1){
+                if (s.length() == 1) {
                     array[i][j] = s.charAt(0);
-                }else {
-                    throw new RuntimeException(s+" 无法转换为char");
+                } else {
+                    throw new RuntimeException(s + " 无法转换为char");
                 }
             }
         }
@@ -175,7 +173,7 @@ public class HzaUtils {
         Stack<String> stack = new Stack<>();
 
         String[] split = strs.split("],\\[");//   根据 ],[ 进行拆分即可
-        if(split.length==1) split = strs.split("]\n,\\["); // 根据 ]\n,[ 进行拆分
+        if (split.length == 1) split = strs.split("]\n,\\["); // 根据 ]\n,[ 进行拆分
         List<List<String>> ans = new ArrayList<>();
         for (int i = 0; i < split.length; i++) {
             split[i] = split[i].replaceAll("\\[", "");//去掉多余的修饰符
@@ -191,6 +189,15 @@ public class HzaUtils {
             ans.add(list);
         }
         return ans;
+    }
+
+    public static <T> List<T> string2List(String strs) {
+        String[] strings = string2Strings(strs);
+        ArrayList<T> list = new ArrayList<>();
+        for (String string : strings) {
+            list.add((T) string);
+        }
+        return list;
     }
 
     public static List<List<Integer>> string2IntegerList2D(String strs) {
@@ -218,12 +225,11 @@ public class HzaUtils {
 
     public static int[][] string2IntegerArray2D(String strs) {
 
-        if("[]".equals(strs)) return new int[0][];
+        if ("[]".equals(strs)) return new int[0][];
 
         List<List<String>> lists = string2StringList2D(strs);
         int m = lists.size(), n = lists.get(0).size();
         int[][] ans = new int[m][n];
-
 
 
         for (int i = 0; i < m; i++) {
