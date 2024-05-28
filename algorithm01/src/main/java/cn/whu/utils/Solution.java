@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -123,6 +124,13 @@ public class Solution {
         System.out.println("[");
         for (int i = 0; i < arr.length; i++) {
             System.out.println(Arrays.toString(arr[i]));
+        }
+        System.out.println("]");
+    }
+    public static void print2(List<List<Integer>> lists) {
+        System.out.println("[");
+        for (int i = 0; i < lists.size(); i++) {
+            System.out.println(lists.get(i));
         }
         System.out.println("]");
     }
