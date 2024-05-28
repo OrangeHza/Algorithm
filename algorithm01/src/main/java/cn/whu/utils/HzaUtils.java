@@ -141,7 +141,6 @@ public class HzaUtils {
         return array;
     }
 
-
     public static char[][] string2CharArray2D(String strs) {
         List<List<String>> lists = HzaUtils.string2StringList2D(strs);
         int m = lists.size();
@@ -199,6 +198,8 @@ public class HzaUtils {
         }
         return list;
     }
+
+
 
     public static List<List<Integer>> string2IntegerList2D(String strs) {
 
