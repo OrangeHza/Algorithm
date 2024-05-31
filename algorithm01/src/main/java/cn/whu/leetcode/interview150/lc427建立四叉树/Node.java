@@ -42,24 +42,37 @@ class Node {
 
     public void levelOrder() {
         Queue<Node> q = new LinkedList<>();
-        q.add(this);
+        q.offer(this);
 
         System.out.print("[");
         while (!q.isEmpty()) {
-            Node top = q.remove();
+            Node top = q.poll();
             System.out.print(top);
-            if(top.topLeft!=null) q.add(topLeft);
-            if(top.topRight!=null) q.add(topRight);
-            if(top.bottomLeft!=null) q.add(bottomLeft);
-            if(top.bottomRight!=null) q.add(bottomRight);
+            if(top.isLeaf) continue;//很重要
+            if (top.topLeft != null) q.offer(top.topLeft);//一定记住是top.
+            if (top.topRight != null) q.offer(top.topRight);
+            if (top.bottomLeft != null) q.offer(top.bottomLeft);
+            if (top.bottomRight != null) q.offer(top.bottomRight);
         }
         System.out.println("]");
-
     }
 
     @Override
     public String toString() {
-        return "[" + val + "," + isLeaf + ']';
+        int leaf = isLeaf ? 1 : 0;
+        int value = val ? 1 : 0;
+        if (!isLeaf) value = 1;
+        return "[" + leaf + "," + value + ']';
+    }
+
+    public static void main(String[] args) {
+        int n = 8;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.printf("(%d,%d)\t", i, j);
+            }
+            System.out.println();
+        }
     }
 }
 
