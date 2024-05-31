@@ -1,6 +1,7 @@
 package cn.whu.utils;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class ListNode {
@@ -35,6 +36,16 @@ public class ListNode {
         ListNode tail = root;
         for (int i = 1; i < vals.length; i++) {
             tail.next = new ListNode(vals[i]);
+            tail = tail.next;
+        }
+        return root;
+    }
+    public static ListNode create(List<Integer> vals){
+        if(vals.size()==0) return null;
+        ListNode root = new ListNode(vals.get(0));
+        ListNode tail = root;
+        for (int i = 1; i < vals.size(); i++) {
+            tail.next = new ListNode(vals.get(i));
             tail = tail.next;
         }
         return root;
